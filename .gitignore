@@ -1,3 +1,4 @@
 /front/my-app/node_modules/*
+/front/my-app/node_modules/dist/*
 /front/cordova-app/node_modules/*
 /front/cordova-app/platforms/*
