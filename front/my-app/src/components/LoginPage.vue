@@ -1,18 +1,14 @@
 <template>
   <v-app id="inspire" >
-    <v-content>
+    <v-content > 
       <v-container
-        class="fill-height"
-        fluid
       >
         <v-row
           align="center"
           justify="center"
         >
           <v-col
-            cols="12"
-            sm="8"
-            md="4"
+            cols="5"
           >
             <v-card class="elevation-12">
               <v-toolbar
@@ -29,7 +25,7 @@
                     label="Login"
                     name="login"
                     type="text"
-                    v-model="login"
+                    v-model="user.email"
                     @keyup.enter = "authenticate()"
                   ></v-text-field>
                   <v-text-field
@@ -38,7 +34,7 @@
                     label="Password"
                     name="password"
                     type="password"
-                    v-model="password"
+                    v-model="user.password"
                     @keyup.enter = "authenticate()"
                   ></v-text-field>
                 </v-form>
@@ -55,21 +51,40 @@
   </v-app>
 </template>
 
+
+
 <script>
+import axios from 'axios';
   export default {
     name: 'LoginPage',
     data: () => ({
       drawer: null,
-      login: "",
-      password: ""
+      user: {
+        email: '',
+        password: ''
+      }
     }),
     
     methods: {
-         authenticate: function() {
-           if(this.login == "test" && this.password == "test"){
-             this.$router.push({path: '/main'})
+         authenticate() {
+          axios.post('https://localhost:44340/api/user/user/Login', JSON.stringify(this.user),{
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(response => {
+          localStorage.setItem('token',response.data.token);
+          localStorage.setItem('restaurantId', response.data.restaurantId)
+          if(localStorage.getItem('restaurantId') == 0){
+             this.$router.push('map')
            }
-         }
+          else if(localStorage.getItem('restaurantId') != 0){
+            this.$router.push('menu')
+          }
+        },error => {
+          console.log(error);
+        })
+           
+        }
     }
   }
 </script>

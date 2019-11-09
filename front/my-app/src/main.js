@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueGoogleMaps,{
   load: {
-    key: "AIzaSyA8VWPtO89SIfwked_TRedJgLfck0gvNlc",
+    key: "AIzaSyCc1phOdSc1-2-v_mLiNV9Fb4u6lvlPG3k",
     libraries: "places"
   }
 })

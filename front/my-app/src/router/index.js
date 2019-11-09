@@ -3,8 +3,9 @@ import Router from 'vue-router';
 
 import MainPage from '../components/MainPage';
 import LoginPage from '../components/LoginPage';
-import Jokes from '../components/Jokes';
 import MapComponent from '../components/MapComponent';
+import RegisterForm from '../components/RegisterForm';
+import MenuEditComponent from '../components/MenuEditComponent';
 
 Vue.use(Router)
 
@@ -15,12 +16,20 @@ export default new Router({
             component: MainPage,
             children: [
                 {
-                    path: 'jokes',
-                    component: Jokes
-                },
-                {
                     path: 'map',
                     component: MapComponent
+                },
+                {
+                    path: 'login',
+                    component: LoginPage
+                },
+                {
+                    path: 'register',
+                    component: RegisterForm
+                },
+                {
+                    path: 'menu',
+                    component: MenuEditComponent
                 }
             ]
         },
@@ -30,7 +39,7 @@ export default new Router({
         },
         {
             path: '/',
-            redirect: '/login'
+            redirect: '/main/map'
         }
     ]
 })

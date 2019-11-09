@@ -1,0 +1,14 @@
+D:\inzynierka_repo\bachelor\back\bin\Debug\netcoreapp2.2\Backend.deps.json
+D:\inzynierka_repo\bachelor\back\bin\Debug\netcoreapp2.2\Backend.runtimeconfig.json
+D:\inzynierka_repo\bachelor\back\bin\Debug\netcoreapp2.2\Backend.runtimeconfig.dev.json
+D:\inzynierka_repo\bachelor\back\bin\Debug\netcoreapp2.2\Backend.dll
+D:\inzynierka_repo\bachelor\back\bin\Debug\netcoreapp2.2\Backend.pdb
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.csprojAssemblyReference.cache
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.csproj.CoreCompileInputs.cache
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.RazorAssemblyInfo.cache
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.RazorAssemblyInfo.cs
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.AssemblyInfoInputs.cache
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.AssemblyInfo.cs
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.RazorTargetAssemblyInfo.cache
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.dll
+D:\inzynierka_repo\bachelor\back\obj\Debug\netcoreapp2.2\Backend.pdb
