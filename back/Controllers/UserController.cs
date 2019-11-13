@@ -45,6 +45,13 @@ namespace Backend.Controllers
                 return Unauthorized(returned);
             }
         }
+        [Authorize(Policy = "admin")]
+        [HttpPut]
+        [Route("User/{id}/Block")]
+        public ActionResult<User> SwitchActiveUser([FromRoute] int id)
+        {
+            return Ok(_service.SwitchActiveUser(id));
+        }
         [AllowAnonymous]
         [HttpPost]
         [Route("User")]

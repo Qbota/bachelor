@@ -11,8 +11,7 @@ namespace Backend.Entities
         public string Name { get; set; }
         public double Lng { get; set; }
         public double Lat { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public bool IsActive { get; set; }
         public IEnumerable<Meal> Menu { get; set; }
         public bool HasMeal(string meal)
         {
@@ -21,7 +20,7 @@ namespace Backend.Entities
             else
                 return false;
         }
-        public override string ToString() => $"0,\"{Name}\",{Lat.ToString(System.Globalization.CultureInfo.InvariantCulture)},{Lng.ToString(System.Globalization.CultureInfo.InvariantCulture)}";
+        public override string ToString() => $"0,\"{Name}\",{Lat.ToString(System.Globalization.CultureInfo.InvariantCulture)},{Lng.ToString(System.Globalization.CultureInfo.InvariantCulture)},1";
         
     }
 }

@@ -21,7 +21,7 @@ namespace Backend.Repos
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Restaurant> GetAll() => _context.GetRestaurants();
+        public IEnumerable<Restaurant> GetAll() => _context.GetRestaurants().Where(x => x.IsActive == true);
 
 
         public Restaurant GetOne(int id) => _context.GetRestaurants().Where(x => x.Id == id).FirstOrDefault();

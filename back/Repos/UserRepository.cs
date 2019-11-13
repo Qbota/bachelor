@@ -17,7 +17,8 @@ namespace Backend.Repos
 
         public User Delete(int id)
         {
-            throw new NotImplementedException();
+            _userContext.SwitchActiveUser(id);
+            return GetOne(id);
         }
 
         public IEnumerable<User> GetAll() => _userContext.GetAllUsers();

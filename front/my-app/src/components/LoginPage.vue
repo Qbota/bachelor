@@ -19,6 +19,7 @@
                 <div class="flex-grow-1"></div>
               </v-toolbar>
               <v-card-text>
+                <v-text-field v-text="message" style="color: red"/>
                 <v-form>
                   <v-text-field
                     color="primary"
@@ -41,7 +42,7 @@
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
-                <v-btn @click="authenticate()" color="primary">Login</v-btn>
+                <v-btn @click="authenticate()" color="primary" :loading="loading">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -59,29 +60,39 @@ import axios from 'axios';
     name: 'LoginPage',
     data: () => ({
       drawer: null,
+      loading: false,
+      message: '',
       user: {
         email: '',
         password: ''
       }
     }),
-    
     methods: {
          authenticate() {
+          this.loading = true;
           axios.post('https://localhost:44340/api/user/user/Login', JSON.stringify(this.user),{
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then(response => {
+        }).then((response) => {
+          console.log(response);
           localStorage.setItem('token',response.data.token);
-          localStorage.setItem('restaurantId', response.data.restaurantId)
-          if(localStorage.getItem('restaurantId') == 0){
+          localStorage.setItem('restaurantId', response.data.restaurantId);
+          this.loading = false;
+          if(response.data.isAdmin){
+            this.$router.push('admin')
+          }
+          else if(localStorage.getItem('restaurantId') == 0){
              this.$router.push('map')
            }
           else if(localStorage.getItem('restaurantId') != 0){
             this.$router.push('menu')
           }
+          
         },error => {
           console.log(error);
+          this.message = 'Failed to log in';
+          this.loading = false;
         })
            
         }

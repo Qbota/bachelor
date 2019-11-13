@@ -6,6 +6,7 @@ import LoginPage from '../components/LoginPage';
 import MapComponent from '../components/MapComponent';
 import RegisterForm from '../components/RegisterForm';
 import MenuEditComponent from '../components/MenuEditComponent';
+import UserManagement from '../components/UserManagement';
 
 Vue.use(Router)
 
@@ -30,12 +31,11 @@ export default new Router({
                 {
                     path: 'menu',
                     component: MenuEditComponent
+                },{
+                    path: 'admin',
+                    component: UserManagement
                 }
             ]
-        },
-        {
-            path: '/login',
-            component: LoginPage
         },
         {
             path: '/',

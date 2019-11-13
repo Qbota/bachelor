@@ -34,7 +34,7 @@
     <v-card-title>
       Information or Rating?
       <v-spacer/>
-      <v-switch v-model="dialogSwitch"></v-switch>
+      <v-switch v-model="dialogSwitch" :disabled="!logged"/>
     </v-card-title>
     <v-card-text v-if="dialogSwitch == true">
       Rate This Meal!
@@ -66,6 +66,9 @@
             </v-list-item-content>
             <v-list-item-action>
               <v-text-field v-text="chosenMeal.rates[i]"/>
+            </v-list-item-action>
+            <v-list-item-action>
+              <v-icon>mdi-star-outline</v-icon>
             </v-list-item-action>
             
             </v-list-item>
@@ -107,6 +110,7 @@ export default {
       center: { lng: 17.034303, lat: 51.110440 },
       markers: [],
       places: [],
+      logged: false,
       currentPlace: null,
       showInfoWindow: false,
       infoWindowPosition: null,
@@ -160,6 +164,9 @@ export default {
       },
       showDialog(mealInfo){
         this.chosenMeal = mealInfo;
+        if(localStorage.getItem('token') != null){
+          this.logged = true;
+        }
         this.dialog = true;
       },
       closeDialog(){
@@ -172,6 +179,7 @@ export default {
           price: 0.0
         };
         this.dialog = false;
+        this.logged = false;
       },
       filter (item, queryText) {
         return queryText.length > 2 && item.toLowerCase().indexOf(queryText) > -1

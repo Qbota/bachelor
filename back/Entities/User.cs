@@ -14,8 +14,18 @@ namespace Backend.Entities
         public string Token { get; set; }
         public int RestaurantId { get; set; }
         public Restaurant Restaurant { get; set; }
-        public override string ToString() => $"0,\"{Email}\",\"{Password}\",{Convert.ToInt32(IsAdmin)}," +
-            $"(select id from restaurants where restaurant_lat={Restaurant.Lat.ToString(System.Globalization.CultureInfo.InvariantCulture)} and restaurant_lng={Restaurant.Lng.ToString(System.Globalization.CultureInfo.InvariantCulture)})";
+        public bool IsActive { get; set; }
+        public override string ToString() {
+            if(Restaurant == null)
+            {
+                return $"0,\"{Email}\",\"{Password}\",{Convert.ToInt32(IsAdmin)},0,1";
+            }
+            else
+            {
+                return $"0,\"{Email}\",\"{Password}\",{Convert.ToInt32(IsAdmin)}," +
+            $"(select id from restaurants where restaurant_lat={Restaurant.Lat.ToString(System.Globalization.CultureInfo.InvariantCulture)} and restaurant_lng={Restaurant.Lng.ToString(System.Globalization.CultureInfo.InvariantCulture)}),1";
+            }
+        }
         
     }
 }

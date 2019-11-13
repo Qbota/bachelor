@@ -47,14 +47,27 @@ namespace Backend.Entities
                             Email = reader["email"].ToString(),
                             Password = reader["password"].ToString(),
                             IsAdmin = Convert.ToBoolean(reader["is_admin"]),
-                            RestaurantId = Convert.ToInt32(reader["restaurant_id"])
+                            RestaurantId = Convert.ToInt32(reader["restaurant_id"]),
+                            IsActive = Convert.ToBoolean(reader["is_active"])
                         });
                     }
                 }
             }
             return list;
         }
+        public int SwitchActiveUser(int id)
+        {
+            using(var conn = GetConnection())
+            {
+                conn.Open();
+                var cmd = new MySqlCommand($"Update users set is_active = !is_active where id={id}", conn);
+                cmd.ExecuteNonQuery();
+                cmd = new MySqlCommand($"update restaurants set is_active = !is_active where id=(select restaurant_id from users where id={id})", conn);
+                cmd.ExecuteNonQuery();
+            }
 
+            return id;
+        }
         private MySqlConnection GetConnection()
         {
             return new MySqlConnection(ConnectionString);

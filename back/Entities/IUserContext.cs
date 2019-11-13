@@ -9,5 +9,6 @@ namespace Backend.Entities
     {
         User AddUser(User user);
         IEnumerable<User> GetAllUsers();
+        int SwitchActiveUser(int id);
     }
 }

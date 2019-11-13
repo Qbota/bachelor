@@ -10,12 +10,12 @@
           </v-row>
           <v-row justify="center">
             <v-col cols="8">
-              <v-text-field v-model="password" label="Password" :rules="passwordRules" required></v-text-field>
+              <v-text-field v-model="password" label="Password" :rules="passwordRules" type="password" required ></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
             <v-col cols="8">
-              <v-text-field v-model="second_password" label="Repeat password" :rules="secondPasswordRules" required></v-text-field>
+              <v-text-field v-model="second_password" label="Repeat password" :rules="secondPasswordRules" type="password" required></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
@@ -55,7 +55,7 @@
           </v-container>
           <v-row justify="center">
             <v-btn class="ma-1" @click="clearInput()">Clear</v-btn>
-            <v-btn :disabled="!valid" class="ma-1" @click="register()">Register</v-btn>
+            <v-btn :disabled="!valid" class="ma-1" @click="register()" :loading="loading">Register</v-btn>
           </v-row>
         </v-form>
       </v-container>
@@ -70,6 +70,7 @@ export default {
   data() {
     return {
       valid: true,
+      loading: false,
       owner: false,
       name: "",
       restaurantId: 0,
@@ -130,11 +131,13 @@ export default {
         if(this.password != this.second_password){
           //this.$refs.form.reset()
         }else{
+          this.loading = true;
           if(this.owner){
             this.registerOwner();
           }else{
             this.registerUser();
           }
+          
         }
         
       }
@@ -158,8 +161,11 @@ export default {
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then(error => {
+        }).then(() => {
+          this.loading = false;
+        },error => {
           this.dialog = false;
+          this.loading = false;
           console.log(error);
         })
     },
@@ -179,14 +185,6 @@ export default {
     },
     registerOwner(){
       this.geocode().then( () => {
-        console.log({
-          email: this.login,
-          password: this.password,
-          restaurant: {
-            lng: this.lng,
-            lat: this.lat
-          }
-        })
       axios.post('https://localhost:44340/api/user/user/', JSON.stringify({
           email: this.login,
           password: this.password,
@@ -198,10 +196,14 @@ export default {
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then(error => {
+        }).then(() => {
+            this.loading = false;
+          },error => {
           this.dialog = false;
+          this.loading = false;
           console.log(error);
         })
+        
       })
     }
   }

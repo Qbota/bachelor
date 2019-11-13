@@ -11,5 +11,6 @@ namespace Backend.Services
         IEnumerable<User> GetUsers();
         User ValidateLogin(string email, string password);
         User Register(User user);
+        User SwitchActiveUser(int id);
     }
 }

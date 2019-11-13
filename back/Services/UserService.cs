@@ -38,10 +38,15 @@ namespace Backend.Services
             return created;
         }
 
+        public User SwitchActiveUser(int id)
+        {
+            return _userRepo.Delete(id);
+        }
+
         public User ValidateLogin(string email, string password)
         {
             var repoUser = _userRepo.GetOne(email);
-            if(repoUser == null)
+            if(repoUser == null || !repoUser.IsActive)
             {
                 return new User();
             }
@@ -136,5 +141,6 @@ namespace Backend.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+        
     }
 }

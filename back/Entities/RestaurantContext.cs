@@ -40,7 +40,7 @@ namespace Backend.Entities
             using (var conn = GetConnection())
             {
                 conn.Open();
-                var cmd = new MySqlCommand("select id, restaurant_name, restaurant_lat, restaurant_lng from restaurants", conn);
+                var cmd = new MySqlCommand("select * from restaurants", conn);
                 using(var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -51,7 +51,8 @@ namespace Backend.Entities
                             Id = Convert.ToInt32(reader["id"]),
                             Name = reader["restaurant_name"].ToString(),
                             Lat = Convert.ToDouble(reader["restaurant_lat"]),
-                            Lng = Convert.ToDouble(reader["restaurant_lng"])
+                            Lng = Convert.ToDouble(reader["restaurant_lng"]),
+                            IsActive = Convert.ToBoolean(reader["is_active"])
               
                         });
                     }
