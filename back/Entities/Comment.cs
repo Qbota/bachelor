@@ -11,6 +11,5 @@ namespace Backend.Entities
         public string Text { get; set; }
         public int MealId { get; set; }
         public override string ToString() => $"0,\"{Text}\",\"{Rate}\",\"{MealId}\"";
-        
     }
 }

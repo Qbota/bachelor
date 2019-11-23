@@ -49,6 +49,8 @@ namespace Backend
             services.AddScoped(typeof(IRepository<User>), typeof(UserRepository));
             services.AddScoped(typeof(IUserService), typeof(UserService));
 
+            services.AddScoped(typeof(Tools.ILogger), typeof(Tools.FileLogger));
+
             //Configure JWT
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("Secrets").GetSection("JWT").Value);
             services.AddAuthentication(x =>
@@ -92,7 +94,7 @@ namespace Backend
 
             app.UseCors("AllowAll");
             app.UseAuthentication();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

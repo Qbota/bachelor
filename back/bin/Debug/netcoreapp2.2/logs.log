@@ -1,0 +1,135 @@
+[INFO] 20-11-2019 19:31:59 Message: Received http get request to get all restaurants
+[INFO] 20-11-2019 19:31:59 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:31:59 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:41:25 Message: Received http get request to get all restaurants
+[INFO] 20-11-2019 19:41:25 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:41:25 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:41:32 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:41:32 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:41:36 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:41:36 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:41:39 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:41:39 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:41:39 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:41:39 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:43:19 Message: Received http get request to get all restaurants
+[INFO] 20-11-2019 19:43:20 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:43:20 Message: Getting restaurant data from database
+[ERROR] 20-11-2019 19:43:20 Message: Error while getting restaurants data from databaseAuthentication to host 'localhost' for user 'root' using method 'caching_sha2_password' failed with message: Access denied for user 'root'@'localhost' (using password: YES)
+[INFO] 20-11-2019 19:43:20 Message: Received http get request to get all restaurants
+[INFO] 20-11-2019 19:43:20 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:43:20 Message: Getting restaurant data from database
+[ERROR] 20-11-2019 19:43:21 Message: Error while getting restaurants data from databaseAuthentication to host 'localhost' for user 'root' using method 'caching_sha2_password' failed with message: Access denied for user 'root'@'localhost' (using password: YES)
+[INFO] 20-11-2019 19:44:50 Message: Received http get request to get all restaurants
+[INFO] 20-11-2019 19:44:51 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:44:51 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:49:08 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:49:08 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:49:19 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:49:19 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:50:10 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:50:10 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:50:19 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:50:19 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:51:16 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:51:16 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:51:24 Message: Establishing connection with database
+[INFO] 20-11-2019 19:51:24 Message: Getting users data from database
+[INFO] 20-11-2019 19:51:24 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:51:24 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:51:25 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:51:25 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:52:58 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:52:58 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:53:11 Message: Establishing connection with database
+[INFO] 20-11-2019 19:53:11 Message: Getting users data from database
+[INFO] 20-11-2019 19:53:11 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:53:11 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:53:11 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:53:11 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:53:55 Message: Establishing connection with database
+[INFO] 20-11-2019 19:53:55 Message: Getting users data from database
+[INFO] 20-11-2019 19:53:55 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:53:55 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:53:55 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:53:55 Message: Getting restaurant data from database
+[INFO] 20-11-2019 19:57:49 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 19:57:49 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:01:33 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:01:33 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:02:51 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:02:51 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:04:22 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:04:22 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:08:06 Message: Establishing connection with database
+[INFO] 20-11-2019 20:08:06 Message: Getting users data from database
+[INFO] 20-11-2019 20:08:06 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:08:06 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:08:06 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:08:06 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:09:28 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:09:28 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:09:44 Message: Establishing connection with database
+[INFO] 20-11-2019 20:09:44 Message: Getting users data from database
+[INFO] 20-11-2019 20:09:44 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:09:44 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:09:45 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:09:45 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:10:17 Message: Establishing connection with database
+[INFO] 20-11-2019 20:10:17 Message: Getting users data from database
+[INFO] 20-11-2019 20:10:17 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:10:17 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:10:17 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:10:17 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:15:33 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:15:33 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:15:41 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:15:41 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:15:54 Message: Establishing connection with database
+[INFO] 20-11-2019 20:15:54 Message: Getting users data from database
+[INFO] 20-11-2019 20:15:54 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:15:54 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:15:55 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:15:55 Message: Getting restaurant data from database
+[INFO] 20-11-2019 20:18:28 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 20:18:28 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:01 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:01 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:03 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:03 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:11 Message: Establishing connection with database
+[INFO] 20-11-2019 21:03:11 Message: Getting users data from database
+[INFO] 20-11-2019 21:03:11 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:11 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:12 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:12 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:16 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:16 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:19 Message: Establishing connection with database
+[INFO] 20-11-2019 21:03:19 Message: Getting users data from database
+[INFO] 20-11-2019 21:03:19 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:19 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:20 Message: Establishing connection with database
+[INFO] 20-11-2019 21:03:20 Message: Getting users data from database
+[INFO] 20-11-2019 21:03:28 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:28 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:40 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:40 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:47 Message: Establishing connection with database
+[INFO] 20-11-2019 21:03:47 Message: Getting users data from database
+[INFO] 20-11-2019 21:03:47 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:47 Message: Getting restaurant data from database
+[INFO] 20-11-2019 21:03:47 Message: Establishing connection with database
+[INFO] 20-11-2019 21:03:47 Message: Getting users data from database
+[INFO] 20-11-2019 21:03:48 Message: Establishing connection to dabatase
+[INFO] 20-11-2019 21:03:48 Message: Getting restaurant data from database
+[INFO] 22-11-2019 18:21:08 Message: Received http get request to get all restaurants
+[INFO] 22-11-2019 18:21:08 Message: Establishing connection to dabatase
+[INFO] 22-11-2019 18:21:08 Message: Getting restaurant data from database
+[INFO] 22-11-2019 18:21:08 Message: Getting restaurant data from database
+[INFO] 22-11-2019 18:21:08 Message: Getting restaurant data from database
+[INFO] 22-11-2019 18:21:10 Message: Establishing connection to dabatase
+[INFO] 22-11-2019 18:21:10 Message: Getting restaurant data from database
+[INFO] 22-11-2019 18:21:10 Message: Received http get request to get all restaurants
+[INFO] 22-11-2019 18:21:10 Message: Establishing connection to dabatase
+[INFO] 22-11-2019 18:21:10 Message: Getting restaurant data from database

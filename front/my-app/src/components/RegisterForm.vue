@@ -4,51 +4,51 @@
       <v-container>
         <v-form v-model="valid" ref="form" :lazy-validation="true" class="ma-5">
           <v-row justify="center">
-            <v-col cols="8">
-              <v-text-field v-model="login" label="Login" :rules="loginRules" required></v-text-field>
+            <v-col cols="10">
+              <v-text-field v-model="login" label="Email" :rules="loginRules" required></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col cols="8">
+            <v-col cols="10">
               <v-text-field v-model="password" label="Password" :rules="passwordRules" type="password" required ></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col cols="8">
+            <v-col cols="10">
               <v-text-field v-model="second_password" label="Repeat password" :rules="secondPasswordRules" type="password" required></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col cols="8">
+            <v-col cols="10">
               <v-text-field v-text="'Are you owner of a restaurant?'"/>
               <v-checkbox v-model="owner"/>
             </v-col>
           </v-row>
           <v-container v-if="owner">
           <v-row justify="center">
-            <v-col cols="8">
-              <v-text-field v-model="name" label="Name" :rules="nameRules" :counter="25" required></v-text-field>
+            <v-col cols="10">
+              <v-text-field v-model="name" label="Name" :rules="nameRules"  required></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col cols="4">
-              <v-text-field v-model="address_street" label="Street" :rules="streetRules" :counter="25"  required></v-text-field>
+            <v-col cols="5">
+              <v-text-field v-model="address_street" label="Street" :rules="streetRules"  required></v-text-field>
             </v-col>
-            <v-col cols="4">
+            <v-col cols="5">
               <v-text-field v-model="address_number" label="Number" :rules="numberRules" required></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col cols="4">
-              <v-text-field v-model="address_postal_code" label="Postal Code" :rules="codeRules" :counter="25"  required></v-text-field>
+            <v-col cols="5">
+              <v-text-field v-model="address_postal_code" label="Postal Code" :rules="codeRules"   required></v-text-field>
             </v-col>
-            <v-col cols="4">
+            <v-col cols="5">
               <v-text-field v-model="address_city" label="City" :rules="cityRules" required></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col cols="4"></v-col>
-            <v-col cols="4">
+            <v-col cols="5"></v-col>
+            <v-col cols="5">
               <v-text-field v-model="address_country" label="Country" :rules="codeRules" required></v-text-field>
             </v-col>
           </v-row>
@@ -86,7 +86,6 @@ export default {
       second_password: "",
       nameRules: [
         v => !!v || "Name is required",
-        v => (v && v.length <= 25) || "Name must be less than 10 characters"
       ],
       streetRules: [
         v => !!v || "Street is required"
@@ -133,7 +132,7 @@ export default {
         }else{
           this.loading = true;
           if(this.owner){
-            this.registerOwner();
+            this.geocode();
           }else{
             this.registerUser();
           }
@@ -142,10 +141,11 @@ export default {
         
       }
     },
-    async geocode() {
-      await axios.get(
+    geocode() {
+       axios.get(
         'https://maps.googleapis.com/maps/api/geocode/json?' + 'address='+ this.address_street + this.address_number + this.address_city + this.address_postal_code + this.address_country + '&key=AIzaSyCc1phOdSc1-2-v_mLiNV9Fb4u6lvlPG3k' 
         ).then(response => {
+          console.log(response)
           this.lat = response.data.results[0].geometry.location.lat;
           this.lng = response.data.results[0].geometry.location.lng;
           this.registerRestaurant();
@@ -154,7 +154,7 @@ export default {
         });
     },
     registerUser(){
-        axios.post('https://localhost:44340/api/user/user/', JSON.stringify({
+        axios.post('http://192.168.1.15:9500/api/user/user/', JSON.stringify({
           email: this.login,
           password: this.password
         }),{
@@ -163,6 +163,7 @@ export default {
           }
         }).then(() => {
           this.loading = false;
+          this.$router.push('map');
         },error => {
           this.dialog = false;
           this.loading = false;
@@ -170,7 +171,7 @@ export default {
         })
     },
     registerRestaurant(){
-        axios.post('https://localhost:44340/api/restaurant/restaurant', JSON.stringify({
+        axios.post('http://192.168.1.15:9500/api/restaurant/restaurant', JSON.stringify({
           name: this.name,
           lng: this.lng,
           lat: this.lat,
@@ -178,14 +179,16 @@ export default {
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then(error => {
+        }).then(() => {
+          this.registerOwner();
+        },error => {
           this.dialog = false;
           console.log(error);
         })
     },
     registerOwner(){
-      this.geocode().then( () => {
-      axios.post('https://localhost:44340/api/user/user/', JSON.stringify({
+      
+      axios.post('http://192.168.1.15:9500/api/user/user/', JSON.stringify({
           email: this.login,
           password: this.password,
           restaurant: {
@@ -196,7 +199,8 @@ export default {
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then(() => {
+        }).then((response) => {
+            console.log(response);
             this.loading = false;
           },error => {
           this.dialog = false;
@@ -204,7 +208,7 @@ export default {
           console.log(error);
         })
         
-      })
+      
     }
   }
 };

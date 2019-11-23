@@ -8,7 +8,6 @@
   >
     <template v-slot:top>
       <v-toolbar flat color="white">
-        <v-toolbar-title>Menu</v-toolbar-title>
         <v-spacer/>
         <v-text-field
         v-model="search"
@@ -197,7 +196,7 @@ export default {
           })
         });
         console.log(content);
-        axios.put("https://localhost:44340/api/restaurant/restaurant/menu", JSON.stringify(content),
+        axios.put("http://192.168.1.15:9500/api/restaurant/restaurant/menu", JSON.stringify(content),
         {
           headers: {
             'Content-Type': 'application/json',
@@ -215,7 +214,7 @@ export default {
       const response_menu = [];
       console.log('Bearer' + localStorage.getItem('token'))
       //if menu is null restaurant id is not assigned
-      axios.get("https://localhost:44340/api/restaurant/restaurant/menu",{
+      axios.get("http://192.168.1.15:9500/api/restaurant/restaurant/menu",{
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }

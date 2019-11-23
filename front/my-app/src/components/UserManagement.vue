@@ -2,7 +2,8 @@
   <v-app>
     <v-data-table :headers="headers" :items="users">
     <template v-slot:item.action="{ item }">
-      <v-btn @click="blockUser(item)">test</v-btn>
+      <v-btn v-if="item.isActive == 'true'" @click="blockUser(item)">Block</v-btn>
+      <v-btn v-else @click="blockUser(item)">Unblock</v-btn>
     </template>
     </v-data-table>
   </v-app>
@@ -35,7 +36,7 @@ export default {
     methods: {
         getUsers(){
           const responseUsers = [];
-            axios.get("https://localhost:44340/api/user/user",{
+            axios.get("http://192.168.1.15:9500/api/user/user",{
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
@@ -58,7 +59,7 @@ export default {
             });
         },
         blockUser(user){
-          axios.put('https://localhost:44340/api/user/User/'+ user.id +'/Block',{},{
+          axios.put('http://192.168.1.15:9500/api/user/User/'+ user.id +'/Block',{},{
             headers: {
               'Authorization': 'Bearer ' + localStorage.getItem('token')
             }}

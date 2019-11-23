@@ -8,14 +8,14 @@
           justify="center"
         >
           <v-col
-            cols="5"
+            cols="10"
           >
             <v-card class="elevation-12">
               <v-toolbar
                color="primary"
                 flat
               >
-                <v-toolbar-title>Login form</v-toolbar-title>
+                <v-toolbar-title>Provide Email and Password</v-toolbar-title>
                 <div class="flex-grow-1"></div>
               </v-toolbar>
               <v-card-text>
@@ -23,7 +23,7 @@
                 <v-form>
                   <v-text-field
                     color="primary"
-                    label="Login"
+                    label="Email"
                     name="login"
                     type="text"
                     v-model="user.email"
@@ -70,12 +70,11 @@ import axios from 'axios';
     methods: {
          authenticate() {
           this.loading = true;
-          axios.post('https://localhost:44340/api/user/user/Login', JSON.stringify(this.user),{
+          axios.post('http://192.168.1.15:9500/api/user/user/Login', JSON.stringify(this.user),{
           headers: {
             'Content-Type': 'application/json'
           }
         }).then((response) => {
-          console.log(response);
           localStorage.setItem('token',response.data.token);
           localStorage.setItem('restaurantId', response.data.restaurantId);
           this.loading = false;

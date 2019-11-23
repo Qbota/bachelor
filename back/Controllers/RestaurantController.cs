@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Backend.Entities;
 using Backend.Services;
+using Backend.Tools;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -19,9 +20,11 @@ namespace Backend.Controllers
     public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantService _service;
-        public RestaurantController(IRestaurantService service)
+        private readonly ILogger _logger;
+        public RestaurantController(IRestaurantService service, ILogger logger)
         {
             _service = service;
+            _logger = logger;
         }
         [HttpGet]
         [Route("Restaurant")]
@@ -34,6 +37,7 @@ namespace Backend.Controllers
         [Route("GetAllRestaurants")]
         public ActionResult<IEnumerable<Restaurant>> GetAllRestaurants()
         {
+            _logger.AddInfoLog("Received http get request to get all restaurants");
             return Ok(_service.GetAll());
         }
         [HttpGet]
@@ -41,6 +45,10 @@ namespace Backend.Controllers
         public ActionResult<Restaurant> GetSingleRestaurantByName([FromRoute] string name)
         {
             var restaurant = _service.GetRestaurantByName(name);
+            if(restaurant == null)
+            {
+                return NotFound();
+            }
             restaurant.Menu = null;
             return Ok(restaurant);
         }
@@ -52,6 +60,7 @@ namespace Backend.Controllers
             var name = GetNameFromRequest(Request);
             if(name == null)
             {
+                _logger.AddInfoLog("Unauthorized access to menu of restaurant");
                 return Unauthorized();
             }
             return Ok(_service.GetRestaurantByName(name).Menu);
@@ -64,6 +73,7 @@ namespace Backend.Controllers
             var name = GetNameFromRequest(Request);
             if (name == null)
             {
+                _logger.AddInfoLog("Unauthorized access to changing menu of restaurant");
                 return Unauthorized();
             }
             return Ok(_service.UpdateMenu(name, menu));

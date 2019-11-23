@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Backend.Tools;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -11,21 +12,33 @@ namespace Backend.Entities
     {
         public string ConnectionString;
         private IConfiguration _config;
+        private ILogger _logger;
 
-        public UserContext(IConfiguration config)
+        public UserContext(IConfiguration config, ILogger logger)
         {
+            _logger = logger;
             _config = config;
             ConnectionString = _config.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value;
         }
 
         public User AddUser(User user)
         {
-            var temp = $"insert into users values({user.ToString()})";
+
             using (var conn = GetConnection())
             {
-                conn.Open();
-                var cmd = new MySqlCommand($"insert into users values({user.ToString()})", conn);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    _logger.AddInfoLog("Establishing connection with database");
+                    conn.Open();
+                    _logger.AddInfoLog($"Inserting new user: {user.ToString()} to database");
+                    var cmd = new MySqlCommand($"insert into users values({user.ToString()})", conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    _logger.AddErrorLog($"Error while inserting new user: {user.ToString()}" + e.Message);
+                }
+
             }
             return user;
         }
@@ -35,23 +48,33 @@ namespace Backend.Entities
             var list = new List<User>();
             using(var conn = GetConnection())
             {
-                var cmd = new MySqlCommand("select * from users", conn);
-                conn.Open();
-                using(var reader = cmd.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
+                    _logger.AddInfoLog("Establishing connection with database");
+                    conn.Open();
+                    _logger.AddInfoLog("Getting users data from database");
+                    var cmd = new MySqlCommand("select * from users", conn);
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        list.Add(new User()
+                        while (reader.Read())
                         {
-                            Id = Convert.ToInt32(reader["id"]),
-                            Email = reader["email"].ToString(),
-                            Password = reader["password"].ToString(),
-                            IsAdmin = Convert.ToBoolean(reader["is_admin"]),
-                            RestaurantId = Convert.ToInt32(reader["restaurant_id"]),
-                            IsActive = Convert.ToBoolean(reader["is_active"])
-                        });
+                            list.Add(new User()
+                            {
+                                Id = Convert.ToInt32(reader["id"]),
+                                Email = reader["email"].ToString(),
+                                Password = reader["password"].ToString(),
+                                IsAdmin = Convert.ToBoolean(reader["is_admin"]),
+                                RestaurantId = Convert.ToInt32(reader["restaurant_id"]),
+                                IsActive = Convert.ToBoolean(reader["is_active"])
+                            });
+                        }
                     }
                 }
+                catch (Exception e)
+                {
+                    _logger.AddErrorLog("Error while getting users from database" + e.Message);
+                }
+                
             }
             return list;
         }
@@ -59,11 +82,22 @@ namespace Backend.Entities
         {
             using(var conn = GetConnection())
             {
-                conn.Open();
-                var cmd = new MySqlCommand($"Update users set is_active = !is_active where id={id}", conn);
-                cmd.ExecuteNonQuery();
-                cmd = new MySqlCommand($"update restaurants set is_active = !is_active where id=(select restaurant_id from users where id={id})", conn);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    _logger.AddInfoLog("Establishing connection with database");
+                    conn.Open();
+                    _logger.AddInfoLog($"Changing status of user: {id}");
+                    var cmd = new MySqlCommand($"Update users set is_active = !is_active where id={id}", conn);
+                    cmd.ExecuteNonQuery();
+                    _logger.AddInfoLog($"Changing status of restaurant of user: {id}");
+                    cmd = new MySqlCommand($"update restaurants set is_active = !is_active where id=(select restaurant_id from users where id={id})", conn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    _logger.AddErrorLog($"Error while changing status of user: {id}" + e.Message);
+                }
+                
             }
 
             return id;
