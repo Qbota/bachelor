@@ -36,7 +36,7 @@ export default {
     methods: {
         getUsers(){
           const responseUsers = [];
-            axios.get("http://192.168.1.15:9500/api/user/user",{
+            axios.get("http://localhost:9500/api/user/user",{
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
@@ -59,7 +59,7 @@ export default {
             });
         },
         blockUser(user){
-          axios.put('http://192.168.1.15:9500/api/user/User/'+ user.id +'/Block',{},{
+          axios.put('http://localhost:9500/api/user/User/'+ user.id +'/Block',{},{
             headers: {
               'Authorization': 'Bearer ' + localStorage.getItem('token')
             }}

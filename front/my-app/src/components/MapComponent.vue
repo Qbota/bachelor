@@ -151,7 +151,7 @@ export default {
           text: this.commentText,
           mealid: this.chosenMeal.id,
         };
-        axios.post('http://192.168.1.15:9500/api/restaurant/meal/comment', JSON.stringify(comment),{
+        axios.post('http://localhost:9500/api/restaurant/meal/comment', JSON.stringify(comment),{
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -185,7 +185,7 @@ export default {
         return queryText.length > 2 && item.toLowerCase().indexOf(queryText) > -1
       },
       getMeals(){
-        axios.get("http://192.168.1.15:9500/api/restaurant/meal")
+        axios.get("http://localhost:9500/api/restaurant/meal")
         .then(response => {
           response.data.forEach(element => {
             this.meals.push(element.name)
@@ -205,8 +205,8 @@ export default {
       getMarkers(){
         this.markers = []
         let places = []
-        //let res = axios.get('http://192.168.1.15:9500/api/restaurant/GetPlacesWithMeal/' + this.searchInput)
-        axios.get('http://192.168.1.15:9500/api/restaurant/GetPlacesWithMeal/' + this.searchInput)
+        //let res = axios.get('http://localhost:9500/api/restaurant/GetPlacesWithMeal/' + this.searchInput)
+        axios.get('http://localhost:9500/api/restaurant/GetPlacesWithMeal/' + this.searchInput)
         .then((response) => {
             response.data.forEach(element => {
               places.push({

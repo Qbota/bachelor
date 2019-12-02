@@ -196,7 +196,7 @@ export default {
           })
         });
         console.log(content);
-        axios.put("http://192.168.1.15:9500/api/restaurant/restaurant/menu", JSON.stringify(content),
+        axios.put("http://localhost:9500/api/restaurant/restaurant/menu", JSON.stringify(content),
         {
           headers: {
             'Content-Type': 'application/json',
@@ -214,7 +214,7 @@ export default {
       const response_menu = [];
       console.log('Bearer' + localStorage.getItem('token'))
       //if menu is null restaurant id is not assigned
-      axios.get("http://192.168.1.15:9500/api/restaurant/restaurant/menu",{
+      axios.get("http://localhost:9500/api/restaurant/restaurant/menu",{
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }

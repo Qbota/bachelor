@@ -70,7 +70,7 @@ import axios from 'axios';
     methods: {
          authenticate() {
           this.loading = true;
-          axios.post('http://192.168.1.15:9500/api/user/user/Login', JSON.stringify(this.user),{
+          axios.post('http://localhost:9500/api/user/user/Login', JSON.stringify(this.user),{
           headers: {
             'Content-Type': 'application/json'
           }

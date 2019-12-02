@@ -154,7 +154,7 @@ export default {
         });
     },
     registerUser(){
-        axios.post('http://192.168.1.15:9500/api/user/user/', JSON.stringify({
+        axios.post('http://localhost:9500/api/user/user/', JSON.stringify({
           email: this.login,
           password: this.password
         }),{
@@ -171,7 +171,7 @@ export default {
         })
     },
     registerRestaurant(){
-        axios.post('http://192.168.1.15:9500/api/restaurant/restaurant', JSON.stringify({
+        axios.post('http://localhost:9500/api/restaurant/restaurant', JSON.stringify({
           name: this.name,
           lng: this.lng,
           lat: this.lat,
@@ -188,7 +188,7 @@ export default {
     },
     registerOwner(){
       
-      axios.post('http://192.168.1.15:9500/api/user/user/', JSON.stringify({
+      axios.post('http://localhost:9500/api/user/user/', JSON.stringify({
           email: this.login,
           password: this.password,
           restaurant: {
